@@ -1,2 +1,0 @@
-- name: Validate Commits with Commitlint
-  uses: joberstein/actions-commitlint-validation@v1.0.0
