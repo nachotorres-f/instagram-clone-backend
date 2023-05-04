@@ -9,7 +9,10 @@ router
     User.findAll()
       .then((users) => res.json(users))
       .catch((error) =>
-        res.status(500).json({ messageError: error.errors[0].message })
+        res.status(500).json({
+          messageError: error.errors[0].message,
+          path: error.errors[0].path,
+        })
       )
   )
   .post((req, res) => {
@@ -22,7 +25,10 @@ router
     })
       .then((user) => res.json(user))
       .catch((error) =>
-        res.status(500).json({ messageError: error.errors[0].message })
+        res.status(500).json({
+          messageError: error.errors[0].message,
+          path: error.errors[0].path,
+        })
       );
   });
 
@@ -32,7 +38,10 @@ router
     User.findByPk(req.params.id)
       .then((user) => res.json(user))
       .catch((error) =>
-        res.status(500).json({ messageError: error.errors[0].message })
+        res.status(500).json({
+          messageError: error.errors[0].message,
+          path: error.errors[0].path,
+        })
       )
   )
   .put((req, res) => {
@@ -43,14 +52,20 @@ router
     })
       .then((user) => res.json(user))
       .catch((error) =>
-        res.status(500).json({ messageError: error.errors[0].message })
+        res.status(500).json({
+          messageError: error.errors[0].message,
+          path: error.errors[0].path,
+        })
       );
   })
   .delete((req, res) =>
     User.destroy({ where: { id: req.params.id } })
       .then(() => res.end())
       .catch((error) =>
-        res.status(500).json({ messageError: error.errors[0].message })
+        res.status(500).json({
+          messageError: error.errors[0].message,
+          path: error.errors[0].path,
+        })
       )
   );
 
