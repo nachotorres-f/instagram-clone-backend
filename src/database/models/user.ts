@@ -1,3 +1,4 @@
+import { hashSync } from 'bcrypt';
 import { sequelize } from '../db';
 import {
   Model,
@@ -55,6 +56,9 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      set(value: string) {
+        this.setDataValue('password', hashSync(value, 10));
+      },
     },
     active: {
       type: DataTypes.BOOLEAN,
