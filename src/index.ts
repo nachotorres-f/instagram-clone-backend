@@ -1,14 +1,12 @@
 import express from 'express';
-import { authenticateConnection } from './database/authenticateConnection';
+import { router } from './routes';
+import './database';
 
 const app = express();
 const port = 3000;
 
-authenticateConnection();
-
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+app.use(express.json());
+app.use('/api', router);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
