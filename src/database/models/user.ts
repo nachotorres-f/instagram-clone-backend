@@ -16,7 +16,8 @@ export class User extends Model<
   declare username: string;
   declare email: string;
   declare password: string;
-  declare active: boolean | null;
+  declare active?: boolean;
+  declare codeActivation: number | null;
 }
 
 User.init(
@@ -61,9 +62,13 @@ User.init(
       },
     },
     active: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: false,
+    },
+    codeActivation: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   },
   { sequelize, modelName: 'users' }
