@@ -58,7 +58,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       set(value: string) {
-        this.setDataValue('password', hashSync(value, 10));
+        this.setDataValue('password', hashSync(value, process.env.HASH_SALT));
       },
     },
     active: {
