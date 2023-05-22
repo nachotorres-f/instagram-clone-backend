@@ -1,3 +1,4 @@
+import { config } from '../../utils/config';
 import { hashSync } from 'bcrypt';
 import { sequelize } from '../db';
 import {
@@ -58,7 +59,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       set(value: string) {
-        this.setDataValue('password', hashSync(value, process.env.HASH_SALT));
+        this.setDataValue('password', hashSync(value, config.HASH_SALT));
       },
     },
     active: {
