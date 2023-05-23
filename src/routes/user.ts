@@ -1,5 +1,5 @@
 import express from 'express';
-import { User } from '../database/models/user';
+import { User } from '../models/user';
 import { sendMail } from '../utils/mail';
 const router = express.Router();
 const path = '/user';

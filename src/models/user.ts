@@ -1,6 +1,6 @@
-import { config } from '../../utils/config';
+import { config } from '../utils/config';
 import { hashSync } from 'bcrypt';
-import { sequelize } from '../db';
+import { sequelize } from './';
 import {
   Model,
   InferAttributes,
