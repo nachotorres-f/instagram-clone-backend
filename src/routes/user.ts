@@ -54,7 +54,7 @@ router
 router
   .route(path + '/:id')
   .get((req, res) =>
-    User.findByPk(req.params.id)
+    User.findByPk(req.params.id, { attributes: ['username', 'email'] })
       .then((user) => res.json(user))
       .catch((error) =>
         res.status(500).json({
@@ -69,7 +69,7 @@ router
         id: req.params.id,
       },
     })
-      .then((user) => res.json(user))
+      .then((user) => res.status(200).json(user))
       .catch((error) =>
         res.status(500).json({
           messageError: error.errors[0].message,
@@ -98,7 +98,7 @@ router.route(path + '/active/:id').put((req, res) => {
       },
     }
   )
-    .then((user) => res.json(user))
+    .then((user) => res.status(200).json(user))
     .catch(() => res.status(500).end());
 });
 

@@ -10,6 +10,7 @@ const sequelizeConfig = {
     pass: config.DB_DEV_PASSWORD,
     host: config.DB_DEV_HOST,
     dialect: config.DB_DEV_DIALECT,
+    logging: true,
   },
   test: {
     name: config.DB_TEST_NAME,
@@ -17,6 +18,7 @@ const sequelizeConfig = {
     pass: config.DB_TEST_PASSWORD,
     host: config.DB_TEST_HOST,
     dialect: config.DB_TEST_DIALECT,
+    logging: false,
   },
   production: {
     name: config.DB_PROD_NAME,
@@ -24,6 +26,7 @@ const sequelizeConfig = {
     pass: config.DB_PROD_PASSWORD,
     host: config.DB_PROD_HOST,
     dialect: config.DB_PROD_DIALECT,
+    logging: true,
   },
 };
 
@@ -34,6 +37,7 @@ export const sequelize = new Sequelize(
   {
     host: sequelizeConfig[env].host,
     dialect: sequelizeConfig[env].dialect,
+    logging: sequelizeConfig[env].logging,
   }
 );
 
